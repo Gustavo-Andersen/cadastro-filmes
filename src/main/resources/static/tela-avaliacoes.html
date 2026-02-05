@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⭐ Visualizar Avaliações</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/escuro.css">
+    <style>
+        .avaliacao-card {
+            border-left: 5px solid #007bff;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+<body>
+<nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Cinema API</span>
+            <button class="btn btn-outline-secondary" id="toggleTheme" title="Alternar Modo Escuro/Claro">
+                <i class="bi bi-sun-fill" id="toggleThemeIcon"></i> 
+            </button>
+        </div>
+</nav>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-info">⭐ Gestão de Avaliações</h1>
+    
+    <div id="alertaAvaliacao" class="alert mt-3 d-none" role="alert"></div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Buscar Avaliação por ID</h5>
+            <div class="input-group">
+                <input type="number" id="avaliacaoIdPesquisa" class="form-control" placeholder="Digite o ID da avaliação">
+                <button class="btn btn-outline-info" type="button" id="btnPesquisarAvaliacao">Pesquisar</button>
+            </div>
+            <div id="detalheAvaliacao" class="mt-3">
+                </div>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div class="text-center mb-3">
+        <button class="btn btn-primary" type="button" id="btnListarTodasAvaliacoes">
+            Listar Todas as Avaliações
+        </button>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            Lista de Avaliações
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Filme</th>
+                        <th>Nota</th>
+                        <th>Texto</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaAvaliacoesBody">
+                    <tr><td colspan="5" class="text-center">Use o botão "Listar Todas" para carregar.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEditarAvaliacao" tabindex="-1" aria-labelledby="modalLabelEditarAvaliacao" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelEditarAvaliacao">Editar Avaliação (ID: <span id="editarAvaliacaoId"></span>)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarAvaliacao">
+                    <div class="mb-3">
+                        <label for="editarAvaliacaoNota" class="form-label">Nota (1 a 10):</label>
+                        <input type="number" class="form-control" id="editarAvaliacaoNota" min="1" max="10" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editarAvaliacaoTexto" class="form-label">Texto da Avaliação:</label>
+                        <textarea class="form-control" id="editarAvaliacaoTexto" rows="3" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btnSalvarEdicaoAvaliacao">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/avaliacoes.js"></script>
+<script src="/js/modo_escuro.js"></script>
+</body>
+</html>
